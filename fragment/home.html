@@ -1,0 +1,115 @@
+<div class="page">
+    <div class="page__hd">
+        <h1 class="page__title">
+            <img src="./images/logo.png" alt="WeUI" height="21px"/>
+        </h1>
+        <p class="page__desc">SweetTools 是一套定制化的福利性质的在线工具集，尽量满足大家提出的所有需求。您有什么另类的开发需求都可以找我们。Email:
+            sweet8@protonmail.com</p>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <ul>
+            <li class="js_show">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">1024小草</p>
+                    <img src="./images/icon_nav_form.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access js_item" data-id="chrome1024" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>1024快捷键（Chrome插件）</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access" target="_blank"
+                           href="https://www.wjx.top/jq/22962372.aspx">
+                            <div class="weui-cell__bd">
+                                <p>1024定制版客户端（火热开发中）</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="js_show">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">种子</p>
+                    <img src="./images/icon_nav_layout.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access" target="_blank"
+                           href="https://www.wjx.top/jq/22962883.aspx">
+                            <div class="weui-cell__bd">
+                                <p>发现最新种子（火热开发中）</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="js_show">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">其他</p>
+                    <img src="./images/icon_nav_feedback.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access" target="_blank" href="https://www.wjx.top/jq/22963009.aspx">
+                            <div class="weui-cell__bd">
+                                <p>我想要一个这样的工具...</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="page__ft">
+        <a href="javascript:home()"><img src="./images/icon_footer.png"/></a>
+    </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var winH = $(window).height();
+    var categorySpace = 10;
+
+    $('.js_item').on('click', function() {
+      var id = $(this).data('id');
+      window.pageManager.go(id);
+    });
+    $('.js_category').on('click', function() {
+      var $this = $(this),
+          $inner = $this.next('.js_categoryInner'),
+          $page = $this.parents('.page'),
+          $parent = $(this).parent('li');
+      var innerH = $inner.data('height');
+      bear = $page;
+
+      if (!innerH) {
+        $inner.css('height', 'auto');
+        innerH = $inner.height();
+        $inner.removeAttr('style');
+        $inner.data('height', innerH);
+      }
+
+      if ($parent.hasClass('js_show')) {
+        $parent.removeClass('js_show');
+      } else {
+        $parent.siblings().removeClass('js_show');
+
+        $parent.addClass('js_show');
+        if (this.offsetTop + this.offsetHeight + innerH > $page.scrollTop() + winH) {
+          var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;
+
+          if (scrollTop > this.offsetTop) {
+            scrollTop = this.offsetTop - categorySpace;
+          }
+
+          $page.scrollTop(scrollTop);
+        }
+      }
+    });
+  });
+</script>

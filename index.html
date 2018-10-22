@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>SweetTools</title>
+    <link rel="stylesheet" href="style/weui.css"/>
+    <link rel="stylesheet" href="style/app.css"/>
+</head>
+<body ontouchstart>
+<div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+
+<div class="container" id="container"></div>
+
+<script type="text/html" id="tpl_home">
+<div class="page">
+    <div class="page__hd">
+        <h1 class="page__title">
+            <img src="./images/logo.png" alt="WeUI" height="21px"/>
+        </h1>
+        <p class="page__desc">SweetTools 是一套定制化的福利性质的在线工具集，尽量满足大家提出的所有需求。您有什么另类的开发需求都可以找我们。Email:
+            sweet8@protonmail.com</p>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <ul>
+            <li class="js_show">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">1024小草</p>
+                    <img src="./images/icon_nav_form.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access js_item" data-id="chrome1024" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>1024快捷键（Chrome插件）</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access" target="_blank"
+                           href="https://www.wjx.top/jq/22962372.aspx">
+                            <div class="weui-cell__bd">
+                                <p>1024定制版客户端（火热开发中）</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="js_show">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">种子</p>
+                    <img src="./images/icon_nav_layout.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access" target="_blank"
+                           href="https://www.wjx.top/jq/22962883.aspx">
+                            <div class="weui-cell__bd">
+                                <p>发现最新种子（火热开发中）</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="js_show">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">其他</p>
+                    <img src="./images/icon_nav_feedback.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access" target="_blank" href="https://www.wjx.top/jq/22963009.aspx">
+                            <div class="weui-cell__bd">
+                                <p>我想要一个这样的工具...</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="page__ft">
+        <a href="javascript:home()"><img src="./images/icon_footer.png"/></a>
+    </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var winH = $(window).height();
+    var categorySpace = 10;
+
+    $('.js_item').on('click', function() {
+      var id = $(this).data('id');
+      window.pageManager.go(id);
+    });
+    $('.js_category').on('click', function() {
+      var $this = $(this),
+          $inner = $this.next('.js_categoryInner'),
+          $page = $this.parents('.page'),
+          $parent = $(this).parent('li');
+      var innerH = $inner.data('height');
+      bear = $page;
+
+      if (!innerH) {
+        $inner.css('height', 'auto');
+        innerH = $inner.height();
+        $inner.removeAttr('style');
+        $inner.data('height', innerH);
+      }
+
+      if ($parent.hasClass('js_show')) {
+        $parent.removeClass('js_show');
+      } else {
+        $parent.siblings().removeClass('js_show');
+
+        $parent.addClass('js_show');
+        if (this.offsetTop + this.offsetHeight + innerH > $page.scrollTop() + winH) {
+          var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;
+
+          if (scrollTop > this.offsetTop) {
+            scrollTop = this.offsetTop - categorySpace;
+          }
+
+          $page.scrollTop(scrollTop);
+        }
+      }
+    });
+  });
+</script>
+</script>
+<script type="text/html" id="tpl_chrome1024">
+<div class="page">
+    <div class="page__toolbar">
+        <div class="weui-flex">
+            <div class="page__toolbar__leftbtn"><a class="weui-btn-back" href="/"><img
+                    src="images/ic_arrow_back_white_24dp.png"/></a></div>
+            <div class="weui-flex__item page__toolbar__title"><span>1024快捷键（Chrome插件）</span></div>
+            <div class="page__toolbar__rightbtn">
+                <a class="weui-btn-home" href="/">
+                    <img src="images/ic_home_white_24dp.png">
+                </a></div>
+        </div>
+    </div>
+    <div class="page__hd">
+        <h1 class="page__title">1024快捷键（Chrome插件）</h1>
+        <p class="page__desc">史上打开1024小草最快的方式，妈妈再也看不到我的搜索建议了！</p>
+    </div>
+    <div class="page__bd">
+        <article class="weui-article">
+            <section>
+                <h1 class="title">一、关于</h1>
+                <section>
+                    <h2 class="title">关于本应用<span style="color: green">（最新版1.8）</span></h2>
+                    <img style="width: 400px" src="/images/screen-1024.png?ds"/>
+                    <p>
+                        1024快捷键是由SweetTools团队开发的一款可以快速打开1024小草最新地址的服务，只要轻轻一点，就可以打开。服务使用chrome插件的形式提供。
+                    </p>
+                </section>
+                <section>
+                    <h2 class="title">关于SweetTools</h2>
+                    <p>
+                        <a href="/">SweetTools</a>致力于为广大网友开发快捷、智能的福利应用，更多应用请查看<a href="https://tools.sweet8.asia">主页</a>，任何开发需求都可发送到：sweet8@protonmail.com
+
+                    </p>
+                </section>
+                <section>
+                    <h2 class="title">意见反馈</h2>
+                    <p>
+                        1、<a href="https://www.wjx.top/jq/22963810.aspx" target="_blank">我遇到了问题，我要反馈</a>
+                    </p>
+                    <p>
+                        2、官方唯一QQ客服：2515266569
+                    </p>
+                </section>
+
+
+                <section>
+                    <h2 class="title">安装地址</h2>
+                    <p><a href="https://chrome.google.com/webstore/detail/%E5%B0%8F%E8%8D%89%E5%BF%AB%E6%8D%B7%E9%94%AE/nenfddiohjmoebppodfimhfpghlempbb" target="_blank">Chrome 插件官方地址</a></p>
+                </section>
+
+                <h1 class="title">二、手动安装步骤（无法访问Chrome插件商店的时候）</h1>
+                <section>
+
+                    <ul>
+                        <li>1、点击下载<a href="http://yxshare.oss-cn-hangzhou.aliyuncs.com/toolher/XiaoCao1024ChromeExtension.1.8.crx.zip"
+                                   target="_blank">插件zip文件</a>，并解压得到ctx文件</li>
+                        <li>2、浏览器切换到插件管理页面： chrome://extensions/</li>
+                        <li>3、将ctx文件拖拽到插件管理页面，点击添加</li>
+                        <li>4、浏览器右上角出现插件，点击就可直接打开小草</li>
+                    </ul>
+                </section>
+                <h1 class="title">三、视频演示</h1>
+                <section>
+                    <h3>（可切换到全屏查看）</h3>
+                    <video style="width: 800px" autoplay src="/package/xiaocao1024-v1.4-t.mp4" controls="controls">
+                        您的浏览器不支持 video 标签。
+                    </video>
+
+                </section>
+
+            </section>
+        </article>
+    </div>
+    <div class="page__ft">
+        <a href="javascript:home()"><img src="./images/icon_footer_link.png"/></a>
+    </div>
+</div>
+</script>
+<script src="zepto.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+<script src="app.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?b0eee80c9d09f8a21b9f753dd302f903';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-119404178-1', {});
+  window.ga_user_id = ''
+</script>
+</body>
+</html>
